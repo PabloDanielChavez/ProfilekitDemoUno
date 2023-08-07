@@ -20,7 +20,8 @@ import {
     article6,
     article7,
     article8,
-    article9
+    article9,
+    informacionContacto
 } from "./variables.js";
 
 
@@ -31,58 +32,65 @@ export function cambiarInfomarcion(tipo) {
     if (tipo === "about" && infoEstado !== "about") {
         modificarClaseInformacion(navOpcMii, "right0", informacionSobremi);
         infoEstado = "about";
-        body.classList.add('scroll');;
+        body.classList.add('scroll');
     }
     else if (tipo === "servicio" && infoEstado !== "servicio") {
         modificarClaseInformacion(navOpcSer, "right100", informacionServicio);
         infoEstado = "servicio";
-        body.classList.add('scroll');;
+        body.classList.add('scroll');
 
     }
     else if (tipo === "portfolio" && infoEstado !== "portfolio") {
         modificarClaseInformacion(navOpcPor, "right200", informacionPortafolio);
         infoEstado = "portfolio";
-        body.classList.add('scroll');;
+        body.classList.add('scroll');
 
     }
     else if (tipo === "contact" && infoEstado !== "contact") {
-        // modificarClaseInformacion(navOpcCon, "right300", "");
-        // infoEstado = "contact";
-        // body.classList.add('scroll');;
+        modificarClaseInformacion(navOpcCon, "right300", informacionContacto);
+        infoEstado = "contact";
+        body.classList.add('scroll');
 
     }
 }
 
 export function modificarClaseInformacion(clase, right, infoSeccion) {
-    infoSeccion.classList.remove('ocultar');;
-    navOpcMii.setAttribute('disabled', '');;
-    navOpcSer.setAttribute('disabled', '');;
-    navOpcPor.setAttribute('disabled', '');;
-    navOpcCon.setAttribute('disabled', '');;
-    navOpcMii.classList.remove('activo');;
-    navOpcSer.classList.remove('activo');;
-    navOpcPor.classList.remove('activo');;
-    navOpcCon.classList.remove('activo');;
-    informacion.classList.remove('right100');;
-    informacion.classList.remove('right200');;
-    informacion.classList.remove('right300');;
+    infoSeccion.classList.remove('ocultar');
+    navOpcMii.setAttribute('disabled', '');
+    navOpcSer.setAttribute('disabled', '');
+    navOpcPor.setAttribute('disabled', '');
+    navOpcCon.setAttribute('disabled', '');
+    navOpcMii.classList.remove('activo');
+    navOpcSer.classList.remove('activo');
+    navOpcPor.classList.remove('activo');
+    navOpcCon.classList.remove('activo');
+    informacion.classList.remove('right100');
+    informacion.classList.remove('right200');
+    informacion.classList.remove('right300');
     clase.classList.add("activo");
     if (right !== "right0") {
         informacion.classList.add(right);
     }
     setTimeout(() => {
         if (infoSeccion.classList.value !== "informacionSobremi") {
-            informacionSobremi.classList.add('ocultar');;
-        } else if ((infoSeccion.classList.value !== "informacionServicio")) {
-            informacionServicio.classList.add('ocultar');;
+            informacionSobremi.classList.add('ocultar');
+        }
+        if ((infoSeccion.classList.value !== "informacionServicio")) {
+            informacionServicio.classList.add('ocultar');
+        }
+        if ((infoSeccion.classList.value !== "informacionPortafolio")) {
+            informacionPortafolio.classList.add('ocultar');
+        }
+        if ((infoSeccion.classList.value !== "informacionContacto")) {
+            informacionContacto.classList.add('ocultar');
         }
     }, 700);
     setTimeout(() => {
-        body.classList.remove('scroll');;
-        navOpcMii.removeAttribute('disabled', '');;
-        navOpcSer.removeAttribute('disabled', '');;
-        navOpcPor.removeAttribute('disabled', '');;
-        navOpcCon.removeAttribute('disabled', '');;
+        body.classList.remove('scroll');
+        navOpcMii.removeAttribute('disabled', '');
+        navOpcSer.removeAttribute('disabled', '');
+        navOpcPor.removeAttribute('disabled', '');
+        navOpcCon.removeAttribute('disabled', '');
     }, 700);
 }
 

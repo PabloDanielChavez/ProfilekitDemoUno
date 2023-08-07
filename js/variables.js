@@ -10,6 +10,7 @@ export const informacion = document.querySelector("#informacion");
 export const informacionSobremi = document.querySelector("#informacionSobremi");
 export const informacionServicio = document.querySelector("#informacionServicio");
 export const informacionPortafolio = document.querySelector("#informacionPortafolio");
+export const informacionContacto = document.querySelector("#informacionContacto");
 
 export const btnAll = document.querySelector("#btnAll");
 export const btnWeb = document.querySelector("#btnWeb");
