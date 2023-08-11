@@ -5,6 +5,14 @@ export const navOpcSer = document.querySelector("#navOpcSer");
 export const navOpcPor = document.querySelector("#navOpcPor");
 export const navOpcCon = document.querySelector("#navOpcCon");
 
+export const header = document.querySelector("#header");
+
+export const header__navegador = document.querySelector('.header__navegador');
+
+export const menu = document.querySelector("#menu");
+
+export const header__H1 = document.querySelector(".header__H1");
+
 export const informacion = document.querySelector("#informacion");
 
 export const informacionSobremi = document.querySelector("#informacionSobremi");

@@ -21,7 +21,11 @@ import {
     article7,
     article8,
     article9,
-    informacionContacto
+    informacionContacto,
+    menu,
+    header__H1,
+    header,
+    header__navegador
 } from "./variables.js";
 
 
@@ -60,14 +64,14 @@ export function modificarClaseInformacion(clase, right, infoSeccion) {
     navOpcSer.setAttribute('disabled', '');
     navOpcPor.setAttribute('disabled', '');
     navOpcCon.setAttribute('disabled', '');
-    navOpcMii.classList.remove('activo');
-    navOpcSer.classList.remove('activo');
-    navOpcPor.classList.remove('activo');
-    navOpcCon.classList.remove('activo');
+    navOpcMii.classList.remove('linInf');
+    navOpcSer.classList.remove('linInf');
+    navOpcPor.classList.remove('linInf');
+    navOpcCon.classList.remove('linInf');
     informacion.classList.remove('right100');
     informacion.classList.remove('right200');
     informacion.classList.remove('right300');
-    clase.classList.add("activo");
+    clase.classList.add("linInf");
     if (right !== "right0") {
         informacion.classList.add(right);
     }
@@ -195,4 +199,24 @@ function agregarBloc() {
     article7.classList.add('bloc');
     article8.classList.add('bloc');
     article9.classList.add('bloc');
+}
+
+var expand = "no";
+
+export function expandirMenu() {
+    if (expand === "no") {
+        menu.classList.add('activo');
+        header__H1.classList.remove('colorTitulo');
+        header__H1.classList.add('colorTituloTres');
+        header.classList.add('activo');
+        header__navegador.classList.add('activo');
+        expand = "si";
+    } else if (expand === "si") {
+        menu.classList.remove('activo');
+        header__H1.classList.remove('colorTituloTres');
+        header__H1.classList.add('colorTitulo');
+        header.classList.remove('activo');
+        header__navegador.classList.remove('activo');
+        expand = "no";
+    }
 }

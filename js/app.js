@@ -1,4 +1,4 @@
-import { cambiarInfomarcion, cambiarPortafolio } from "./funciones.js";
+import { cambiarInfomarcion, cambiarPortafolio, expandirMenu } from "./funciones.js";
 import {
     navOpcMii,
     navOpcSer,
@@ -7,8 +7,11 @@ import {
     btnAll,
     btnWeb,
     btnBra,
-    btnDes
+    btnDes,
+    menu
 } from "./variables.js";
+
+menu.addEventListener('click', () => expandirMenu());
 
 navOpcMii.addEventListener('click', () => cambiarInfomarcion("about"));
 navOpcSer.addEventListener('click', () => cambiarInfomarcion("servicio"));
