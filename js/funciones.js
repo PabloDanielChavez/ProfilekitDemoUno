@@ -31,8 +31,17 @@ import {
 
 export var infoEstado = "about";
 
-
 export function cambiarInfomarcion(tipo) {
+    navOpcMii.setAttribute('disabled', '');
+    navOpcSer.setAttribute('disabled', '');
+    navOpcPor.setAttribute('disabled', '');
+    navOpcCon.setAttribute('disabled', '');
+    var scrollActual = window.pageYOffset + window.innerHeight;
+    window.scroll({
+        top: 0,
+        behavior: "smooth",
+    })
+    llevarTop(scrollActual, tiempo());
     if (tipo === "about" && infoEstado !== "about") {
         modificarClaseInformacion(navOpcMii, "right0", informacionSobremi);
         infoEstado = "about";
@@ -58,44 +67,64 @@ export function cambiarInfomarcion(tipo) {
     }
 }
 
-export function modificarClaseInformacion(clase, right, infoSeccion) {
-    infoSeccion.classList.remove('ocultar');
-    navOpcMii.setAttribute('disabled', '');
-    navOpcSer.setAttribute('disabled', '');
-    navOpcPor.setAttribute('disabled', '');
-    navOpcCon.setAttribute('disabled', '');
-    navOpcMii.classList.remove('linInf');
-    navOpcSer.classList.remove('linInf');
-    navOpcPor.classList.remove('linInf');
-    navOpcCon.classList.remove('linInf');
-    informacion.classList.remove('right100');
-    informacion.classList.remove('right200');
-    informacion.classList.remove('right300');
-    clase.classList.add("linInf");
-    if (right !== "right0") {
-        informacion.classList.add(right);
+export function tiempo() {
+    var scrollActual = window.pageYOffset + window.innerHeight;
+    if (scrollActual <= 1000) {
+        return 300
+    } else if (scrollActual <= 2000) {
+        return 600
+    } else if (scrollActual <= 3000) {
+        return 1800
+    } else if (scrollActual <= 4000) {
+        return 1800
+    } else if (scrollActual <= 5000) {
+        return 1800
+    } else if (scrollActual > 5000) {
+        return 1800
     }
+}
+
+export function llevarTop(tiempo) {
     setTimeout(() => {
-        if (infoSeccion.classList.value !== "informacionSobremi") {
-            informacionSobremi.classList.add('ocultar');
-        }
-        if ((infoSeccion.classList.value !== "informacionServicio")) {
-            informacionServicio.classList.add('ocultar');
-        }
-        if ((infoSeccion.classList.value !== "informacionPortafolio")) {
-            informacionPortafolio.classList.add('ocultar');
-        }
-        if ((infoSeccion.classList.value !== "informacionContacto")) {
-            informacionContacto.classList.add('ocultar');
-        }
-    }, 700);
+    }, tiempo);
+}
+
+export function modificarClaseInformacion(clase, right, infoSeccion) {
     setTimeout(() => {
-        body.classList.remove('scroll');
-        navOpcMii.removeAttribute('disabled', '');
-        navOpcSer.removeAttribute('disabled', '');
-        navOpcPor.removeAttribute('disabled', '');
-        navOpcCon.removeAttribute('disabled', '');
-    }, 700);
+        infoSeccion.classList.remove('ocultar');
+        navOpcMii.classList.remove('linInf');
+        navOpcSer.classList.remove('linInf');
+        navOpcPor.classList.remove('linInf');
+        navOpcCon.classList.remove('linInf');
+        informacion.classList.remove('right100');
+        informacion.classList.remove('right200');
+        informacion.classList.remove('right300');
+        clase.classList.add("linInf");
+        if (right !== "right0") {
+            informacion.classList.add(right);
+        }
+        setTimeout(() => {
+            if (infoSeccion.classList.value !== "informacionSobremi") {
+                informacionSobremi.classList.add('ocultar');
+            }
+            if ((infoSeccion.classList.value !== "informacionServicio")) {
+                informacionServicio.classList.add('ocultar');
+            }
+            if ((infoSeccion.classList.value !== "informacionPortafolio")) {
+                informacionPortafolio.classList.add('ocultar');
+            }
+            if ((infoSeccion.classList.value !== "informacionContacto")) {
+                informacionContacto.classList.add('ocultar');
+            }
+        }, 700);
+        setTimeout(() => {
+            body.classList.remove('scroll');
+            navOpcMii.removeAttribute('disabled', '');
+            navOpcSer.removeAttribute('disabled', '');
+            navOpcPor.removeAttribute('disabled', '');
+            navOpcCon.removeAttribute('disabled', '');
+        }, 700);
+    }, 500);
 }
 
 export function cambiarPortafolio(tipo) {
@@ -117,7 +146,6 @@ export function cambiarPortafolio(tipo) {
 export function modificarClasePortafolio(clase) {
     agregarDisp();
     removerBloc();
-
 
     setTimeout(() => {
         article1.classList.remove("all", "web", "branding", "design");
@@ -201,22 +229,122 @@ function agregarBloc() {
     article9.classList.add('bloc');
 }
 
-var expand = "no";
-
-export function expandirMenu() {
-    if (expand === "no") {
+export function expandirMenu(tipo) {
+    if (tipo === "si") {
         menu.classList.add('activo');
         header__H1.classList.remove('colorTitulo');
         header__H1.classList.add('colorTituloTres');
         header.classList.add('activo');
         header__navegador.classList.add('activo');
-        expand = "si";
-    } else if (expand === "si") {
+        menu.textContent = 'close';
+    } else if (tipo === "no") {
         menu.classList.remove('activo');
         header__H1.classList.remove('colorTituloTres');
         header__H1.classList.add('colorTitulo');
         header.classList.remove('activo');
         header__navegador.classList.remove('activo');
-        expand = "no";
+        menu.textContent = 'menu';
     }
 }
+
+// export function comprobarScrollHeader(tipo, clase) {
+//     var tamañoPantalla = window.innerWidth;
+//     if (tipo === 'header') {
+//         clase.classList.forEach(cls => {
+
+//             // if (cls !== 'headerScrollAct') {
+
+//             if (tamañoPantalla > 360 && tamañoPantalla < 640) {
+//                 scrollActivar(clase, 480);
+//             }
+//             else if (tamañoPantalla > 414 && tamañoPantalla < 896) {
+//                 scrollActivar(clase, 650);
+//             }
+//             else if (tamañoPantalla > 696 && tamañoPantalla < 896) {
+//                 scrollActivar(clase, 480);
+//             }
+//             else if (tamañoPantalla > 896 && tamañoPantalla < 974) {
+//                 scrollActivar(clase, 480);
+//             }
+//             else if (tamañoPantalla > 974 && tamañoPantalla < 1218) {
+//                 scrollActivar(clase, 720);
+//             }
+//             else if (tamañoPantalla > 1218 && tamañoPantalla < 1523) {
+//                 scrollActivar(clase, 820);
+//             }
+//             else if (tamañoPantalla > 1523 && tamañoPantalla < 1624) {
+//                 scrollActivar(clase, 880);
+//             }
+//             else if (tamañoPantalla > 1624 && tamañoPantalla < 1827) {
+//                 scrollActivar(clase, 980);
+//             }
+//             else if (tamañoPantalla > 1827 && tamañoPantalla < 3000) {
+//                 scrollActivar(clase, 1080);
+//             }
+//             else if (tamañoPantalla > 3000) {
+//                 scrollActivar(clase, 2160);
+//             }
+//             // }
+//         })
+
+//     }
+// }
+
+// function isInViewport() {
+//     var distance = header.getBoundingClientRect();
+//     return (
+//         distance.top < (window.innerHeight || document.documentElement.clientHeight) && distance.bottom > 0
+//     );
+// }
+
+
+// export function scrollActivar(clase) {
+//     var scrollActual = window.pageYOffset + window.innerHeight;
+//     if (isInViewport()) {
+//         clase.classList.add('headerScrollAct');
+//         setTimeout(() => {
+//             clase.classList.add('headerScrollAct');
+//         }, 400);
+//     }
+//     // if (scrollActual >= retornarTamañoPantalla()) {
+//     //     clase.classList.add('headerScrollAct');
+//     //     console.log(!isInViewport());
+//     // } else {
+//     //     clase.classList.remove('headerScrollAct');
+//     // }
+// }
+
+// function retornarTamañoPantalla() {
+
+//     var tamañoPantalla = window.innerWidth;
+//     if (tamañoPantalla > 360 && tamañoPantalla < 640) {
+//         return 480;
+//     }
+//     else if (tamañoPantalla > 414 && tamañoPantalla < 896) {
+//         return 650;
+//     }
+//     else if (tamañoPantalla > 696 && tamañoPantalla < 896) {
+//         return 480;
+//     }
+//     else if (tamañoPantalla > 896 && tamañoPantalla < 974) {
+//         return 480;
+//     }
+//     else if (tamañoPantalla > 974 && tamañoPantalla < 1218) {
+//         return 720;
+//     }
+//     else if (tamañoPantalla > 1218 && tamañoPantalla < 1523) {
+//         return 820;
+//     }
+//     else if (tamañoPantalla > 1523 && tamañoPantalla < 1624) {
+//         return 880;
+//     }
+//     else if (tamañoPantalla > 1624 && tamañoPantalla < 1827) {
+//         return 980;
+//     }
+//     else if (tamañoPantalla > 1827 && tamañoPantalla < 3000) {
+//         return 1080;
+//     }
+//     else if (tamañoPantalla > 3000) {
+//         return 2160;
+//     }
+// }
