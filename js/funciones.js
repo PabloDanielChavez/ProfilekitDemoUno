@@ -247,6 +247,13 @@ export function expandirMenu(tipo) {
     }
 }
 
+export function scrollTop() {
+    window.scroll({
+        top: 0,
+        behavior: "smooth",
+    });
+}
+
 // export function comprobarScrollHeader(tipo, clase) {
 //     var tamañoPantalla = window.innerWidth;
 //     if (tipo === 'header') {

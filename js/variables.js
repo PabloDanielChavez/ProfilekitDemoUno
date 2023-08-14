@@ -35,5 +35,6 @@ export const article7 = document.querySelector("#article-7");
 export const article8 = document.querySelector("#article-8");
 export const article9 = document.querySelector("#article-9");
 
+export const ScrollTop = document.querySelector('#ScrollTop');
 
 export const footer = document.querySelector("#footer");

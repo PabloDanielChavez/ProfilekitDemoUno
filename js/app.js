@@ -2,6 +2,7 @@ import {
     cambiarInfomarcion,
     cambiarPortafolio,
     expandirMenu,
+    scrollTop,
 } from "./funciones.js";
 import {
     navOpcMii,
@@ -13,7 +14,8 @@ import {
     btnBra,
     btnDes,
     menu,
-    header
+    header,
+    ScrollTop
 } from "./variables.js";
 
 var expand = "no";
@@ -55,7 +57,10 @@ btnDes.addEventListener('click', () => cambiarPortafolio("des"));
 //     }
 // });
 
+ScrollTop.addEventListener('click', () => scrollTop());
+
 document.addEventListener('scroll', () => {
+    ScrollTop.classList.toggle('activo', window.scrollY > 10);
     header.classList.toggle('headerScrollAct', window.scrollY > 10);
     expandirMenu('no');
     expand = 'no';
@@ -79,5 +84,3 @@ document.addEventListener('scroll', () => {
         navOpcCon.classList.add('colorParrafo');
     }
 });
-
-
