@@ -13,6 +13,7 @@ export const menu = document.querySelector("#menu");
 
 export const header__H1 = document.querySelector(".header__H1");
 
+export const bienvenida = document.querySelector("#bienvenida");
 export const informacion = document.querySelector("#informacion");
 
 export const informacionSobremi = document.querySelector("#informacionSobremi");

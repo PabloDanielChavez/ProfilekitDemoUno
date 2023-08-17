@@ -15,7 +15,8 @@ import {
     btnDes,
     menu,
     header,
-    ScrollTop
+    ScrollTop,
+    bienvenida
 } from "./variables.js";
 
 var expand = "no";
