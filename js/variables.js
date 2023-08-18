@@ -1,5 +1,7 @@
 export const body = document.querySelector("body");
 
+export const pantallaCarga = document.querySelector('#pantallaCarga');
+
 export const navOpcMii = document.querySelector("#navOpcMii");
 export const navOpcSer = document.querySelector("#navOpcSer");
 export const navOpcPor = document.querySelector("#navOpcPor");

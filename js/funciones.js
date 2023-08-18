@@ -25,8 +25,65 @@ import {
     menu,
     header__H1,
     header,
-    header__navegador
+    header__navegador,
+    pantallaCarga,
+    ScrollTop
 } from "./variables.js";
+
+
+export function cargarPagina() {
+    aPantallaCarga("activo");
+
+    var expand = "no";
+
+    menu.addEventListener('click', () => {
+        if (expand === "no") {
+            expandirMenu('si');
+            expand = 'si';
+        } else if (expand === "si") {
+            expandirMenu('no');
+            expand = 'no';
+        }
+    });
+
+    navOpcMii.addEventListener('click', () => cambiarInfomarcion("about"));
+    navOpcSer.addEventListener('click', () => cambiarInfomarcion("servicio"));
+    navOpcPor.addEventListener('click', () => cambiarInfomarcion("portfolio"));
+    navOpcCon.addEventListener('click', () => cambiarInfomarcion("contact"));
+
+    btnAll.addEventListener('click', () => cambiarPortafolio("all"));
+    btnWeb.addEventListener('click', () => cambiarPortafolio("web"));
+    btnBra.addEventListener('click', () => cambiarPortafolio("bra"));
+    btnDes.addEventListener('click', () => cambiarPortafolio("des"));
+
+    ScrollTop.addEventListener('click', () => scrollTop());
+
+    document.addEventListener('scroll', () => {
+        ScrollTop.classList.toggle('activo', window.scrollY > 10);
+        header.classList.toggle('headerScrollAct', window.scrollY > 10);
+        expandirMenu('no');
+        expand = 'no';
+        if (window.scrollY === 0) {
+            navOpcMii.classList.add('colorLinks');
+            navOpcSer.classList.add('colorLinks');
+            navOpcPor.classList.add('colorLinks');
+            navOpcCon.classList.add('colorLinks');
+            navOpcMii.classList.remove('colorParrafo');
+            navOpcSer.classList.remove('colorParrafo');
+            navOpcPor.classList.remove('colorParrafo');
+            navOpcCon.classList.remove('colorParrafo');
+        } else {
+            navOpcMii.classList.remove('colorLinks');
+            navOpcSer.classList.remove('colorLinks');
+            navOpcPor.classList.remove('colorLinks');
+            navOpcCon.classList.remove('colorLinks');
+            navOpcMii.classList.add('colorParrafo');
+            navOpcSer.classList.add('colorParrafo');
+            navOpcPor.classList.add('colorParrafo');
+            navOpcCon.classList.add('colorParrafo');
+        }
+    });
+}
 
 
 export var infoEstado = "about";
@@ -252,6 +309,20 @@ export function scrollTop() {
         top: 0,
         behavior: "smooth",
     });
+}
+
+
+
+function aPantallaCarga(estado) {
+    if (estado === "activo") {
+        pantallaCarga.style.opacity = "0";
+        pantallaCarga.style.zIndex = "0";
+        body.classList.add('activo');
+    } else {
+        pantallaCarga.style.opacity = "1";
+        pantallaCarga.style.zIndex = "4";
+        body.classList.remove('activo');
+    }
 }
 
 // export function comprobarScrollHeader(tipo, clase) {
